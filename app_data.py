@@ -76,6 +76,9 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password, password)
 
 
+db.create_all()
+
+
 @login_manager.user_loader
 def load_user(user_id):
     return db.session.query(User).get(int(user_id))
